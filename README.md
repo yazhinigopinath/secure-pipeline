@@ -1,0 +1,1 @@
+# secure-CI-CD-pipeline-for-a-static-website-
