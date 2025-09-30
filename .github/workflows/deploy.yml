@@ -6,7 +6,7 @@ on:
       - main  # main branch push aagumbothu run aagum
 
 permissions:
-  contents: read         # workflow repo content read panna permission
+  contents: write       # workflow repo content read panna permission
   pages: write           # GitHub Pages deploy panna permission
   id-token: write        # optional, some actions require it
 
