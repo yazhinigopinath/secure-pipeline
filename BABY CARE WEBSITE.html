@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabyCare | Resources for Parents (0-2 Years)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for section loading */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Hamburger menu for mobile */
+        .menu-btn {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .menu-btn span {
+            width: 30px;
+            height: 2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4a5568;
+            transition: all 0.5s;
+        }
+
+        .menu-btn span:nth-of-type(2) {
+            top: calc(50% - 8px);
+        }
+        .menu-btn span:nth-of-type(3) {
+            top: calc(50% + 8px);
+        }
+
+        .menu-btn.active span:nth-of-type(1) {
+            display: none;
+        }
+        .menu-btn.active span:nth-of-type(2) {
+            top: 50%;
+            transform: translate(-50%, 0%) rotate(45deg);  
+        }
+        .menu-btn.active span:nth-of-type(3) {
+            top: 50%;
+            transform: translate(-50%, 0%) rotate(-45deg); 
+        }
+
+        /* Responsive navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s;
+                box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+                z-index: 1;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4f46e5;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        /* Notification badge */
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ef4444;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-blue-600">
+                <i class="fas fa-baby mr-2"></i>BabyCare
+            </a>
+
+            <button class="menu-btn md:hidden">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                <a href="#food-schedule" class="text-gray-700 hover:text-blue-600 transition">Food Schedule</a>
+                <a href="#medicine-reminder" class="text-gray-700 hover:text-blue-600 transition">Medicine Reminder</a>
+                <a href="#milestones" class="text-gray-700 hover:text-blue-600 transition">Growth Milestones</a>
+                <a href="#parenting-tips" class="text-gray-700 hover:text-blue-600 transition">Tips</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 bg-gradient-to-r from-blue-50 to-purple-50 animated-section">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Parenting Made <span class="text-blue-600">Easier</span></h1>
+                <p class="text-lg text-gray-600 mb-8">Expert resources and tools for parents with babies aged 0-2 years. Track milestones, set reminders, and get helpful tips - all in one place.</p>
+                <div class="flex space-x-4">
+                    <a href="#food-schedule" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition shadow-md">Get Started</a>
+                    <a href="#parenting-tips" class="bg-white hover:bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-medium transition shadow-md">Learn More</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center" style="width:50%;">
+                <img src="IMAGE 1.jpg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How We Can Help</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-baby-carriage"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Milestone Tracking</h3>
+                    <p class="text-gray-600">Monitor your baby's development with our interactive milestone checklist.</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                    <div class="text-purple-500 text-4xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Nutrition Guide</h3>
+                    <p class="text-gray-600">Customized feeding schedules from newborn through toddler years.</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Medication Tracker</h3>
+                    <p class="text-gray-600">Never miss a vaccination or medicine dose with our reminder system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Schedule Section -->
+    <section id="food-schedule" class="py-16 bg-gray-50 animated-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Baby Food Schedule</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Age-appropriate feeding guidelines from newborn to 2 years old</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pink-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-baby text-pink-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">0-6 Months</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Exclusive breastfeeding or formula</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Feed every 2-3 hours (8-12 times/day)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">No solids or water needed</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Watch for hunger cues like rooting, sucking</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-baby text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">6-12 Months</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Begin iron-rich foods (pureed meats, cereals)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Introduce one new food every 3-5 days</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Breastmilk or formula still primary nutrition</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Progress to mashed then finger foods</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-child text-green-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">12-24 Months</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Transition to whole milk (16-24 oz/day)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">3 meals + 2-3 snacks per day</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Offer variety from all food groups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <span class="text-gray-700">Encourage self-feeding with utensils</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            <strong>Important:</strong> These are general guidelines. Always consult with your pediatrician about your baby's specific nutritional needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medicine Reminder Section -->
+    <section id="medicine-reminder" class="py-16 bg-white animated-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Medicine Reminder</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Never miss an important medication or vaccination</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Add New Reminder</h3>
+                    <form id="reminder-form" class="space-y-4">
+                        <div>
+                            <label for="reminder-name" class="block text-sm font-medium text-gray-700 mb-1">Medicine/Vaccine Name</label>
+                            <input type="text" id="reminder-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="reminder-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                            <input type="date" id="reminder-date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="reminder-time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                            <input type="time" id="reminder-time" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="reminder-notes" class="block text-sm font-medium text-gray-700 mb-1">Notes (optional)</label>
+                            <textarea id="reminder-notes" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition">
+                            Set Reminder
+                        </button>
+                    </form>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Reminders</h3>
+                    <div id="reminders-list" class="space-y-4">
+                        <p class="text-gray-500 italic">No reminders set yet. Add your first reminder above.</p>
+                    </div>
+
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Vaccination Schedule</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vaccine</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">Birth</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">HepB (first dose)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">1-2 months</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">HepB (second dose)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">2 months</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">DTaP, Hib, PCV13, Polio, RV</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">6 months</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">DTaP, Hib, PCV13, Polio, RV, Influenza (yearly)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">12-15 months</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">MMR, Varicella, HepA, Hib, PCV13</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Milestones Section -->
+    <section id="milestones" class="py-16 bg-gray-50 animated-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Growth Milestones</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Track your baby's development month by month</p>
+
+            <div class="mb-8">
+                <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                    <li class="mr-2">
+                        <a href="#" data-age="0-3" class="milestone-tab active inline-block p-4 rounded-t-lg bg-blue-600 text-white">0-3 Months</a>
+                    </li>
+                    <li class="mr-2">
+                        <a href="#" data-age="3-6" class="milestone-tab inline-block p-4 rounded-t-lg hover:text-gray-600">3-6 Months</a>
+                    </li>
+                    <li class="mr-2">
+                        <a href="#" data-age="6-9" class="milestone-tab inline-block p-4 rounded-t-lg hover:text-gray-600">6-9 Months</a>
+                    </li>
+                    <li class="mr-2">
+                        <a href="#" data-age="9-12" class="milestone-tab inline-block p-4 rounded-t-lg hover:text-gray-600">9-12 Months</a>
+                    </li>
+                    <li>
+                        <a href="#" data-age="12-24" class="milestone-tab inline-block p-4 rounded-t-lg hover:text-gray-600">12-24 Months</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Content will be loaded dynamically by JavaScript -->
+                <div id="milestones-content" class="col-span-3">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold text-gray-800">0-3 Months Milestones</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Newborn</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-3 flex items-center">
+                                    <i class="fas fa-running mr-2 text-blue-500"></i>Physical
+                                </h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Moves arms and legs symmetrically</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Lifts head briefly during tummy time</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Holds head up when held upright</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-3 flex items-center">
+                                    <i class="fas fa-comments mr-2 text-purple-500"></i>Communication
+                                </h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Makes cooing sounds</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Cries differently for different needs</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Quiets or smiles in response to voice</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-3 flex items-center">
+                                    <i class="fas fa-brain mr-2 text-yellow-500"></i>Cognitive
+                                </h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Recognizes familiar voices</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Tracks objects with eyes</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                        <span>Shows interest in faces</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-info-circle text-blue-400 text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            <strong>Remember:</strong> All babies develop at their own pace. These milestones show what most babies can do by certain ages. If you have any concerns about your baby's development, consult your pediatrician.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parenting Tips Section -->
+    <section id="parenting-tips" class="py-16 bg-white animated-section">
+        <div class="" >
+            <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Parenting Tips & Resources</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Essential Tips for New Parents</h3>
+
+                        <div class="space-y-6">
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 text-blue-500 text-xl mr-4">
+                                        <i class="far fa-sun"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 mb-2">Sleep Strategies</h4>
+                                        <p class="text-gray-600">Newborns sleep 14-17 hours a day in 1-3 hour stretches. Create a calming bedtime routine with dim lights, soft music, and swaddling to help establish good sleep habits.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 text-purple-500 text-xl mr-4">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 mb-2">Soothing Techniques</h4>
+                                        <p class="text-gray-600">Try the 5 S's: Swaddle, Side/Stomach position (while awake), Shush, Swing, and Suck. White noise machines can also help calm a fussy baby by mimicking the womb.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 text-green-500 text-xl mr-4">
+                                        <i class="fas fa-user-md"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 mb-2">When to Call the Doctor</h4>
+                                        <p class="text-gray-600">Call immediately for: fever (rectal temp ≥100.4°F in babies <3 months), difficulty breathing, no wet diapers for 6+ hours, or inconsolable crying for prolonged periods.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 animated-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">We're Here to Help</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Have questions about your baby's development or need parenting advice? Reach out to our community of experts and parents.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Us a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="baby-age" class="block text-sm font-medium text-gray-700 mb-1">Baby's Age</label>
+                            <select id="baby-age" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select an age range</option>
+                                <option value="0-3">0-3 months</option>
+                                <option value="4-6">4-6 months</option>
+                                <option value="7-12">7-12 months</option>
+                                <option value="13-24">13-24 months</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Question</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
