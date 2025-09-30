@@ -1,9 +1,14 @@
-name: Deploy static site to GitHub Pages
+name: Deploy static site to GitHub Pages 
 
 on:
   push:
     branches:
       - main  # main branch push aagumbothu run aagum
+
+permissions:
+  contents: read         # workflow repo content read panna permission
+  pages: write           # GitHub Pages deploy panna permission
+  id-token: write        # optional, some actions require it
 
 jobs:
   deploy:
